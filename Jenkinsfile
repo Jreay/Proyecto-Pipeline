@@ -57,7 +57,7 @@ pipeline {
       steps {
         withSonarQubeEnv(credentialsId: 'sonarqube-secret', installationName: 'sonarqube-server') {
           withMaven(maven : 'mvn-3.6.3') {
-            sh 'mvn sonar:sonar -Dsonar.host.url=http://sonarqube-server:9000 -Dsonar.login=squ_71a13e966896f298ae4b2dccf0e2cfe8ef58fe66'
+            sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=squ_71a13e966896f298ae4b2dccf0e2cfe8ef58fe66'
           }
         }
       }
