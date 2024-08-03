@@ -54,9 +54,12 @@ pipeline {
     }
 
     stage('SonarQube analysis') {
-      def mvn = tool 'SonarJen';
-      withSonarQubeEnv() {
-        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Proyecto-Pipeline"
+      steps {
+        def scannerHome = tool 'SonarScanner';
+        withSonarQubeEnv() {
+          sh "${scannerHome}/bin/sonar-scanner"
+        }
       }
     }
+  }
 }
